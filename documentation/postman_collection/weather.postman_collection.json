@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "7b7a6c3d-c359-47d8-9c8c-46fabd5fc7a3",
+		"name": "weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9819197"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"email\",\r\n    \"password\":\"password of len greater than 5\",\r\n    \"date_of_birth\":\"2020-01-02\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "sourav",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "sourav",
+							"disabled": true
+						},
+						{
+							"key": "date_of_birth",
+							"value": "2020-01-02",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<h2>Login Response</h2>\r",
+							"<p>{{response.data}}</p>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() };\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followAuthorizationHeader": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"registered-username\",\r\n    \"password\":\"registered-password\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/protected/weather/current?user_id=2&city=london",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6InNvdXJhdjEiLCJleHAiOjE2OTg3MjkzNTB9.0zXXgqV8DGRu_kDZ8xjZRhbPXt17X_hDuO8qpXjcqi8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6InNvdXJhdjEiLCJleHAiOjE2OTg3MjkzNTB9.0zXXgqV8DGRu_kDZ8xjZRhbPXt17X_hDuO8qpXjcqi8",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/protected/weather/current?user_id=2&city=london",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"protected",
+						"weather",
+						"current"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "2"
+						},
+						{
+							"key": "city",
+							"value": "london"
+						},
+						{
+							"key": "Authorization",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InNvdXJhdiIsImV4cCI6MTY5ODUwMzc0OX0.USFWBa1Zxz9jGhx-fuNjdDk9uzkd3kYnsTm_b52RFzc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/protected/weather/history/bulkdelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6InNvdXJhdjEiLCJleHAiOjE2OTg3MjkzNTB9.0zXXgqV8DGRu_kDZ8xjZRhbPXt17X_hDuO8qpXjcqi8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"record_ids\" : [6,7,8,9]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/protected/weather/history/bulkdelete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"protected",
+						"weather",
+						"history",
+						"bulkdelete"
+					],
+					"query": [
+						{
+							"key": "record_ids",
+							"value": "[1,2,3,4]",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/protected/weather/history?page=1&per_page=3&user_id=2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6InNvdXJhdjEiLCJleHAiOjE2OTg3MjkzNTB9.0zXXgqV8DGRu_kDZ8xjZRhbPXt17X_hDuO8qpXjcqi8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/protected/weather/history?page=1&per_page=3&user_id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"protected",
+						"weather",
+						"history"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "3"
+						},
+						{
+							"key": "user_id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

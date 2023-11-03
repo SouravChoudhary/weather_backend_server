@@ -43,6 +43,8 @@ APIKey = "your-api-key-here"
 
 The server uses GORM, so no need to create database tables manually; they will be auto-migrated.
 
+Check documentation directory for database schema while DDL SQL queries are available in db/migrations folder.
+
 ## 5. Unit Test 
 
 - Unit Test Case is written for api/service/weather.go file to 
@@ -55,6 +57,7 @@ go tool cover -html=coverage
 
 ## 6. API Documentation
 -  check documentation directory for api documentation.
+-  check documentation directory for postman collection.
 
 ## 7. Limitations
 
