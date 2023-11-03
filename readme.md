@@ -57,7 +57,7 @@ go tool cover -html=coverage
 
 ## 6. API Documentation
 -  check documentation directory for api documentation.
--  check documentation directory for postman collection.
+-  check documentation directory for postman collection (please update the bearer token value with the latest generated value (a new token is generated and returned in response while login)).
 
 ## 7. Limitations
 
